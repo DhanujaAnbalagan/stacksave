@@ -51,7 +51,7 @@ export function LeadCapture({ reportId, totalSavings }: LeadCaptureProps) {
         </div>
         <h3 className="text-xl font-bold mb-2">Report Sent!</h3>
         <p className="text-muted-foreground text-sm max-w-xs mx-auto">
-          We've emailed your full audit breakdown to <span className="text-foreground font-medium">{email}</span>.
+          We&apos;ve emailed your full audit breakdown to <span className="text-foreground font-medium">{email}</span>.
         </p>
       </Card>
     );

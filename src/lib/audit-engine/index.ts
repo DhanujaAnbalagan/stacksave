@@ -11,7 +11,6 @@ import type {
   Recommendation,
   SpendBreakdown,
   ToolEntry,
-  TeamInfo,
   ToolId,
 } from "@/types/audit";
 import { TOOL_PRICING, getListPrice } from "@/data/pricing";
@@ -302,7 +301,7 @@ export function runAuditEngine(state: AuditFormState): AuditResult | null {
   const breakdown: SpendBreakdown[] = [];
 
   for (const entry of tools) {
-    const tool = AI_TOOL_MAP[entry.toolId];
+    // const tool = AI_TOOL_MAP[entry.toolId]; // Unused but kept for reference if needed
     const pricingConfig = TOOL_PRICING[entry.toolId];
     const seats = parseSeats(entry.seats);
     const spend = parseSpend(entry.monthlySpend);
