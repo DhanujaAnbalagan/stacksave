@@ -14,7 +14,6 @@ import type {
   ToolId,
 } from "@/types/audit";
 import { TOOL_PRICING, getListPrice } from "@/data/pricing";
-import { AI_TOOL_MAP } from "@/data/constants";
 import { parseSeatsInput, parseSpendInput, teamSizeToNumber } from "@/lib/utils/format";
 
 // ─── Helpers (mapped to shared utils) ─────────────────────────

@@ -12,6 +12,7 @@ export function ResultsHeader({ generatedAt, onRestart }: ResultsHeaderProps) {
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

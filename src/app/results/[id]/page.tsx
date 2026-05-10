@@ -18,6 +18,7 @@ export default function ReportPage() {
   const [report, setReport] = useState<SavedReport | null | undefined>(undefined);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!id) { setReport(null); return; }
     // Small delay lets the skeleton render before the heavy compute
     const timer = setTimeout(() => {
