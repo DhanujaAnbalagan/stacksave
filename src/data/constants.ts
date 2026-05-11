@@ -94,6 +94,15 @@ export const AI_TOOLS: AIToolConfig[] = [
       { value: "teams", label: "Teams — $35/seat/mo", basePrice: 35 },
     ],
   },
+  {
+    id: "you-com",
+    name: "You.com",
+    emoji: "🔍",
+    color: "bg-indigo-500/15 text-indigo-400",
+    plans: [
+      { value: "pro", label: "Pro — $20/mo", basePrice: 20 },
+    ],
+  },
 ];
 
 export const AI_TOOL_MAP = Object.fromEntries(

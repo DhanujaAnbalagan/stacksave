@@ -6,7 +6,8 @@ export type ToolId =
   | "gemini"
   | "openai-api"
   | "anthropic-api"
-  | "windsurf";
+  | "windsurf"
+  | "you-com";
 
 export type UseCase =
   | "coding"

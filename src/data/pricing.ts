@@ -115,6 +115,14 @@ export const TOOL_PRICING: Record<ToolId, ToolPricingConfig> = {
       { planId: "teams", planName: "Teams", monthlyPrice: 35, isPerSeat: true,  tier: "team"       },
     ],
   },
+  "you-com": {
+    name: "You.com",
+    emoji: "🔍",
+    competingGroup: "search",
+    plans: [
+      { planId: "pro", planName: "Pro", monthlyPrice: 20, isPerSeat: true, tier: "pro" },
+    ],
+  },
 };
 
 /** Resolve the list price for a tool/plan/seat combination */
