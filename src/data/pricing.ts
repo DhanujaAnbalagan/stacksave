@@ -17,7 +17,7 @@ export interface ToolPricingConfig {
   name: string;
   emoji: string;
   /** Used to detect overlapping tools — same group = competing */
-  competingGroup: "chat" | "coding" | "api";
+  competingGroup: "chat" | "coding" | "api" | "search";
   plans: PlanPricing[];
 }
 

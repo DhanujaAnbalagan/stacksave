@@ -224,19 +224,19 @@ function analyzeApiEntry(entry: ToolEntry): Pick<Recommendation, "type" | "title
 // ─── Overlap detection ─────────────────────────────────────────
 
 interface OverlapGroup {
-  group: "chat" | "coding" | "api";
+  group: "chat" | "coding" | "api" | "search";
   entries: ToolEntry[];
 }
 
 function detectOverlaps(entries: ToolEntry[]): OverlapGroup[] {
-  const groups: Record<string, ToolEntry[]> = { chat: [], coding: [], api: [] };
+  const groups: Record<string, ToolEntry[]> = { chat: [], coding: [], api: [], search: [] };
   for (const entry of entries) {
     const config = TOOL_PRICING[entry.toolId];
     if (config) groups[config.competingGroup].push(entry);
   }
   return Object.entries(groups)
     .filter(([, e]) => e.length > 1)
-    .map(([group, entries]) => ({ group: group as "chat" | "coding" | "api", entries }));
+    .map(([group, entries]) => ({ group: group as "chat" | "coding" | "api" | "search", entries }));
 }
 
 function buildOverlapRecommendations(overlaps: OverlapGroup[]): Map<string, Recommendation> {
