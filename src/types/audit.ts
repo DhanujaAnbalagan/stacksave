@@ -7,7 +7,8 @@ export type ToolId =
   | "openai-api"
   | "anthropic-api"
   | "windsurf"
-  | "you-com";
+  | "you-com"
+  | "perplexity";
 
 export type UseCase =
   | "coding"

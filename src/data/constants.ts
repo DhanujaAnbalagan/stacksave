@@ -95,6 +95,16 @@ export const AI_TOOLS: AIToolConfig[] = [
     ],
   },
   {
+    id: "perplexity",
+    name: "Perplexity",
+    emoji: "🌐",
+    color: "bg-blue-400/15 text-blue-300",
+    plans: [
+      { value: "pro", label: "Pro — $20/mo", basePrice: 20 },
+      { value: "enterprise", label: "Enterprise — Custom", basePrice: null },
+    ],
+  },
+  {
     id: "you-com",
     name: "You.com",
     emoji: "🔍",
