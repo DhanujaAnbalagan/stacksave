@@ -444,5 +444,18 @@ describe("runAuditEngine — real-world scenario", () => {
     // Optimized spend must be less than current spend
     expect(result!.totalOptimizedMonthlySpend).toBeLessThan(result!.totalCurrentMonthlySpend);
   });
+
+  it("consolidates 'search' tools (Perplexity + You.com)", () => {
+    const p1 = makeEntry("perplexity", "pro", "20");
+    const y1 = makeEntry("you-com", "pro", "20");
+
+    const state = makeState([p1, y1]);
+    const result = runAuditEngine(state);
+    
+    // Should have a consolidate recommendation for one of them
+    const consolidate = result!.recommendations.find(r => r.type === "consolidate");
+    expect(consolidate).toBeDefined();
+    expect(consolidate?.relatedToolName).toBeDefined();
+  });
 });
 
