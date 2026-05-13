@@ -1,5 +1,6 @@
 "use server";
 
+import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
 
 const leadSchema = z.object({
@@ -20,7 +21,25 @@ export async function submitLead(formData: FormData) {
     };
   }
 
-  // Placeholder for DB logic
-  console.log("Validation successful for:", result.data);
-  return { success: true };
+  const supabase = await createClient();
+
+  try {
+    // 2. Save to Supabase
+    const { error: dbError } = await supabase.from("leads").insert([
+      {
+        email: result.data.email,
+        company_name: result.data.companyName,
+        status: "new",
+      },
+    ]);
+
+    if (dbError) throw dbError;
+    return { success: true };
+  } catch (error) {
+    console.error("Lead submission error:", error);
+    return {
+      success: false,
+      error: "Failed to submit request. Please try again.",
+    };
+  }
 }
