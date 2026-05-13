@@ -93,7 +93,7 @@ export function ReportView({ report }: ReportViewProps) {
           )}
 
           {/* Lead capture — shown after the value is clear */}
-          <LeadCapture reportId={report.id} totalSavings={result.totalAnnualSavings} />
+          <LeadCapture reportId={report.id} />
         </div>
       </main>
     </div>

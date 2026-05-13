@@ -10,10 +10,9 @@ import { submitLead } from "@/app/actions/leads";
 
 interface LeadCaptureProps {
   reportId: string;
-  totalSavings: number;
 }
 
-export function LeadCapture({ reportId, totalSavings }: LeadCaptureProps) {
+export function LeadCapture({ reportId }: LeadCaptureProps) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -26,16 +25,21 @@ export function LeadCapture({ reportId, totalSavings }: LeadCaptureProps) {
 
     setLoading(true);
     try {
-      await submitLead({
-        email,
-        name,
-        company,
-        reportId,
-        savings: totalSavings.toLocaleString(),
-      });
-      setSubmitted(true);
-      // Persist submission state locally
-      localStorage.setItem(`stacksave-lead-${reportId}`, "true");
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("name", name);
+      formData.append("companyName", company);
+      formData.append("reportId", reportId);
+
+      const res = await submitLead(formData);
+      
+      if (res.success) {
+        setSubmitted(true);
+        // Persist submission state locally
+        localStorage.setItem(`stacksave-lead-${reportId}`, "true");
+      } else {
+        console.error("Submission error:", res.error);
+      }
     } catch (err) {
       console.error("Lead submission failed:", err);
     } finally {
